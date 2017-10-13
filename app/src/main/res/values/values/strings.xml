@@ -1,0 +1,11 @@
+<resources>
+    <string name="app_name">AppDistribuidoras</string>
+
+    <string name="cargarVisitasBtn">Cargar Visitas</string>
+    <string name="fueraDeRutaBtn">Cargar Pedido Fuera De Ruta</string>
+    <string name="PedidosCargadosBtn">Pedidos Cargados</string>
+    <string name="infoBtn">Informacion</string>
+    <string name="configBtn">Configuracion</string>
+
+
+</resources>
