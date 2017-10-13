@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.design.widget.CoordinatorLayout
+xmlns:android="http://schemas.android.com/apk/res/android"
+xmlns:app="http://schemas.android.com/apk/res-auto"
+xmlns:tools="http://schemas.android.com/tools"
+android:layout_width="match_parent"
+android:layout_height="match_parent"
+tools:context="com.pampa.distribuidorachacabuco.CargarVisitaActivity">
+
+ <LinearLayout
+     android:layout_width="match_parent"
+     android:layout_height="match_parent"
+     android:orientation="vertical"
+     android:weightSum="1">
+
+     <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+         android:layout_weight="0.7">
+
+         <TextView
+             android:id="@+id/nextClientTextView"
+             android:layout_width="match_parent"
+             android:layout_height="wrap_content"
+             android:paddingTop="10dp"
+             android:text="Proximo Cliente:" />
+
+         <TextView
+             android:id="@+id/clientNameTextView"
+             android:layout_width="match_parent"
+             android:layout_height="wrap_content"
+             android:paddingTop="10dp" />
+
+         <TextView
+             android:id="@+id/dirTextView"
+             android:layout_width="match_parent"
+             android:layout_height="wrap_content"
+             android:paddingTop="10dp"
+             android:text="Direccion:" />
+         <TextView
+             android:id="@+id/dirClientTextView"
+             android:layout_width="match_parent"
+             android:layout_height="wrap_content"
+             android:paddingTop="10dp"
+             android:text="Marmol 235" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:layout_weight="0.3">
+
+        <Button
+            android:id="@+id/cargarPedidoBtn"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Cargar Pedido"
+            android:onClick="irCargarPedido"
+            />
+        <Button
+            android:id="@+id/sinPedidoBtn"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Sin Pedido"
+            android:onClick=""
+            />
+
+    </LinearLayout>
+ </LinearLayout>
+</android.support.design.widget.CoordinatorLayout>

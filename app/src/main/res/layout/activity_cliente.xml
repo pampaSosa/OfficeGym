@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.design.widget.CoordinatorLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.pampa.distribuidorachacabuco.ClienteActivity">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/nombreLabel"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Nombre" />
+        <EditText
+            android:id="@+id/nombreText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:inputType="textPersonName"
+            android:text="" />
+        <TextView
+            android:id="@+id/direccionLabel"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Direccion" />
+        <EditText
+            android:id="@+id/direccionText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:inputType="textPersonName"
+            android:text="" />
+
+        <TextView
+            android:id="@+id/tipoIvaLabel"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Tipo de IVA" />
+        <Spinner
+            android:id="@+id/tipoIvaSpinner"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:entries="@array/tipoIva_array"
+            android:prompt="@string/tipo_iva"
+            android:spinnerMode="dialog" />
+
+        <TextView
+            android:id="@+id/cuitLabel"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="CUIT/DNI" />
+        <EditText
+            android:id="@+id/cuitText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:inputType="textPersonName"
+            android:text="" />
+        <TextView
+            android:id="@+id/telefonoLabel"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Telefono" />
+        <EditText
+            android:id="@+id/telefonoText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:inputType="textPersonName"
+            android:text="" />
+
+        <Button
+            android:id="@+id/button"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:onClick="guardar"
+            android:text="Guardar" />
+
+    </LinearLayout>
+
+
+
+</android.support.design.widget.CoordinatorLayout>
