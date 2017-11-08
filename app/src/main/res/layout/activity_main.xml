@@ -1,13 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.design.widget.CoordinatorLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#C5CAE9"
+    app:statusBarBackground="?attr/colorButtonNormal"
     tools:context="com.pampa.distribuidorachacabuco.MainActivity">
 
     <LinearLayout
+        android:id="@+id/linearLayout"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"
@@ -16,12 +18,6 @@
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
-
-            <ImageView
-                android:id="@+id/logo"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_centerInParent="true" />
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -39,7 +35,10 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        android:text="Zona:" />
+                        android:background="#3F51B5"
+                        android:drawableLeft="@drawable/ic_edit_location_black_24dp"
+                        android:text="Zona:"
+                        android:textColor="@color/icons" />
 
                 </LinearLayout>
 
@@ -62,8 +61,11 @@
                         android:id="@+id/actualClientTextView"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
+                        android:background="#3F51B5"
+                        android:drawableLeft="@drawable/ic_person_black_24dp"
                         android:paddingTop="10dp"
                         android:text="Proximo Cliente:"
+                        android:textColor="@color/icons"
                         android:textSize="14sp" />
 
                 </LinearLayout>
@@ -78,7 +80,8 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        android:paddingTop="10dp"
+                        android:background="#E8EAF6"
+                        android:textColor="@android:color/background_dark"
                         android:textSize="24sp" />
 
                 </LinearLayout>
@@ -93,8 +96,11 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
+                        android:background="#3F51B5"
+                        android:drawableLeft="@drawable/ic_navigation_black_24dp"
                         android:paddingTop="10dp"
                         android:text="Direccion:"
+                        android:textColor="@color/icons"
                         android:textSize="14sp" />
                 </LinearLayout>
 
@@ -108,7 +114,8 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        android:paddingTop="10dp"
+                        android:background="#E8EAF6"
+                        android:textColor="@android:color/background_dark"
                         android:textSize="24sp" />
                 </LinearLayout>
 
@@ -135,6 +142,10 @@
                         android:layout_width="fill_parent"
                         android:layout_height="0dp"
                         android:layout_weight="0.5"
+                        android:paddingBottom="10dp"
+                        android:paddingLeft="15dp"
+                        android:paddingRight="15dp"
+                        android:paddingTop="10dp"
                         android:weightSum="1">
 
                         <RelativeLayout
@@ -146,16 +157,16 @@
                                 android:id="@+id/cargarVisitabtn"
                                 android:layout_width="match_parent"
                                 android:layout_height="match_parent"
+                                android:layout_marginRight="5dp"
+                                android:background="#3F51B5"
+                                android:drawableTop="@drawable/ic_add_shopping_cart_black_24dp"
                                 android:gravity="center|bottom"
                                 android:onClick="irCargarVisita"
                                 android:paddingBottom="10dp"
                                 android:text="Cargar Visita"
+                                android:textColor="@color/icons"
                                 android:textSize="18sp" />
 
-                            <ImageView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_centerInParent="true" />
                         </RelativeLayout>
 
                         <RelativeLayout
@@ -167,16 +178,16 @@
                                 android:id="@+id/pedidosFueraRutaBtn"
                                 android:layout_width="match_parent"
                                 android:layout_height="match_parent"
+                                android:layout_marginLeft="5dp"
+                                android:background="#3F51B5"
+                                android:drawableTop="@drawable/ic_person_pin_circle_black_32dp"
                                 android:gravity="center|bottom"
                                 android:onClick="irPedidoFueraDeRuta"
                                 android:paddingBottom="10dp"
                                 android:text="Pedido Fuera De Ruta"
+                                android:textColor="@color/icons"
                                 android:textSize="18sp" />
 
-                            <ImageView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_centerInParent="true" />
                         </RelativeLayout>
                     </TableRow>
 
@@ -184,6 +195,10 @@
                         android:layout_width="fill_parent"
                         android:layout_height="0dp"
                         android:layout_weight="0.5"
+                        android:paddingBottom="10dp"
+                        android:paddingLeft="15dp"
+                        android:paddingRight="15dp"
+                        android:paddingTop="10dp"
                         android:weightSum="1">
 
                         <RelativeLayout
@@ -198,16 +213,16 @@
                                 android:layout_alignParentLeft="true"
                                 android:layout_alignParentStart="true"
                                 android:layout_alignParentTop="true"
+                                android:layout_marginRight="5dp"
+                                android:background="#3F51B5"
+                                android:drawableTop="@drawable/ic_folder_black_32dp"
                                 android:gravity="center|bottom"
                                 android:onClick="irListadoPedidos"
                                 android:paddingBottom="10dp"
                                 android:text="Pedidos Cargados"
+                                android:textColor="@color/icons"
                                 android:textSize="18sp" />
 
-                            <ImageView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_centerInParent="true" />
                         </RelativeLayout>
 
                         <RelativeLayout
@@ -219,16 +234,16 @@
                                 android:id="@+id/informacionBtn"
                                 android:layout_width="match_parent"
                                 android:layout_height="match_parent"
+                                android:layout_marginLeft="5dp"
+                                android:background="#3F51B5"
+                                android:drawableTop="@drawable/ic_cloud_upload_black_48dp"
                                 android:gravity="center|bottom"
                                 android:onClick="enviarServidor2"
                                 android:paddingBottom="10dp"
                                 android:text="Enviar"
+                                android:textColor="@color/icons"
                                 android:textSize="18sp" />
 
-                            <ImageView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_centerInParent="true" />
                         </RelativeLayout>
                     </TableRow>
 
@@ -236,6 +251,10 @@
                         android:layout_width="fill_parent"
                         android:layout_height="0dp"
                         android:layout_weight="0.5"
+                        android:paddingBottom="10dp"
+                        android:paddingLeft="15dp"
+                        android:paddingRight="15dp"
+                        android:paddingTop="10dp"
                         android:weightSum="1">
 
                         <RelativeLayout
@@ -247,10 +266,14 @@
                                 android:id="@+id/configuracionBtn"
                                 android:layout_width="match_parent"
                                 android:layout_height="match_parent"
+                                android:layout_marginRight="5dp"
+                                android:background="#3F51B5"
+                                android:drawableTop="@drawable/ic_settings_black_48dp"
                                 android:gravity="center|bottom"
                                 android:onClick="irConfiguracion"
                                 android:paddingBottom="10dp"
                                 android:text="Configuracion"
+                                android:textColor="@color/icons"
                                 android:textSize="18sp" />
 
                             <ImageView
@@ -268,16 +291,16 @@
                                 android:id="@+id/button6"
                                 android:layout_width="match_parent"
                                 android:layout_height="match_parent"
+                                android:layout_marginLeft="5dp"
+                                android:background="#3F51B5"
+                                android:drawableTop="@drawable/ic_cloud_download_black_24dp"
                                 android:gravity="center|bottom"
                                 android:onClick="inicioDb"
                                 android:paddingBottom="10dp"
                                 android:text="RECIBIR"
+                                android:textColor="@color/icons"
                                 android:textSize="18sp" />
 
-                            <ImageView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_centerInParent="true" />
                         </RelativeLayout>
                     </TableRow>
 
@@ -288,5 +311,13 @@
 
         </ScrollView>
     </LinearLayout>
-</android.support.design.widget.CoordinatorLayout>
 
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:background="#3F51B5"
+        app:layout_anchor="@+id/linearLayout"
+        app:layout_anchorGravity="bottom|center">
+
+    </FrameLayout>
+</android.support.design.widget.CoordinatorLayout>
