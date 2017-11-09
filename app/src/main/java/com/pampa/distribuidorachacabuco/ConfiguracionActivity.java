@@ -43,7 +43,6 @@ public class ConfiguracionActivity extends AppCompatActivity implements AdapterV
         AdminSQLiteOpenHelper dbHelper = new AdminSQLiteOpenHelper(this);
         SQLiteDatabase db = dbHelper.getWritableDatabase();
         Cursor cursor = db.rawQuery("SELECT _id,nombre FROM recorridos",null);
-        db.close();
         SimpleCursorAdapter adap = new SimpleCursorAdapter(this,android.R.layout.simple_spinner_item, cursor, cols, adapterRows,1);
         adap.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinner.setAdapter(adap);
@@ -80,7 +79,7 @@ public class ConfiguracionActivity extends AppCompatActivity implements AdapterV
 
     }
 
-     public String createCSV(View view){
+    public String createCSV(View view){
 
         File folder = new File(Environment.getExternalStorageDirectory() + "/Folder");
         if (!folder.exists())
@@ -89,22 +88,21 @@ public class ConfiguracionActivity extends AppCompatActivity implements AdapterV
 
 
         AdminSQLiteOpenHelper dbHelper1 = new AdminSQLiteOpenHelper(this);
-        SQLiteDatabase db1 = dbHelper1.getReadableDatabase();
+        SQLiteDatabase db1 = dbHelper1.getWritableDatabase();
         Cursor cursor2 = db1.rawQuery("SELECT * FROM facturas where uploaded = 0", null);
 
         try {
             FileWriter fw = new FileWriter(filename);
 
-            if (cursor2!= null) {
-                cursor2.moveToFirst();
-                for (int i = 0; i < cursor2.getCount(); i++) {
+            while (cursor2.moveToNext()) {
+                for (int i = 0; i < cursor2.getCount(); i++)
                     for (int j = 0; j < cursor2.getColumnNames().length; j++) {
                         fw.append(cursor2.getString(j) + ",");
                     }
                     fw.append("\n");
 
                     cursor2.moveToNext();
-                }
+
                 cursor2.close();
             }
             fw.close();
