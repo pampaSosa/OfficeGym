@@ -11,6 +11,7 @@ import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.CompoundButton;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
@@ -18,13 +19,21 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
+import com.google.gson.JsonObject;
+import com.google.gson.JsonParser;
 import com.kosalgeek.genasync12.AsyncResponse;
 import com.kosalgeek.genasync12.PostResponseAsyncTask;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import com.kosalgeek.android.md5simply.MD5;
+
+import org.json.JSONException;
+import org.json.JSONObject;
 
 
 public class LoginActivity extends AppCompatActivity implements CompoundButton.OnCheckedChangeListener, View.OnClickListener {
@@ -59,12 +68,12 @@ public class LoginActivity extends AppCompatActivity implements CompoundButton.O
         pref = getSharedPreferences("login.conf",Context.MODE_PRIVATE);
         editor = pref.edit();
 
-        String username = pref.getString("email","");
+        String username = pref.getString("nombre","");
         String password = pref.getString("password","");
         Log.d(TAG,pref.getString("password",""));
 
         HashMap data = new HashMap();
-        data.put("email", username);
+        data.put("nombre", username);
         data.put("password", MD5.encrypt((password)));
 
 
@@ -81,7 +90,7 @@ public class LoginActivity extends AppCompatActivity implements CompoundButton.O
                         }
                     });
 
-            task.execute("www.varcreative.com/sistema/login/check");
+            task.execute("www.varcreative.com/sistema/login/check/");
         }
     }
 
@@ -90,36 +99,6 @@ public class LoginActivity extends AppCompatActivity implements CompoundButton.O
 
     @Override
     public void onClick(View v) {
-        /*HashMap data = new HashMap();
-        data.put("email", etxtUsuario.getText().toString());
-        data.put("password",  MD5.encrypt(etxtPassword.getText().toString()));
-
-        PostResponseAsyncTask task = new PostResponseAsyncTask(LoginActivity.this, data,
-                new AsyncResponse() {
-                    @Override
-                    public void processFinish(String s) {
-                        Log.d(TAG, s);
-                        String[] sc = convertir(s);
-
-                        if(sc[0]==("error:false")){
-
-                            if(checkFlag) {
-                                editor.putString("email", etxtUsuario.getText().toString());
-                                editor.putString("password",MD5.encrypt((etxtUsuario.getText().toString())));
-                                editor.apply();
-
-                                Log.d(TAG, pref.getString("password", ""));
-                            }
-
-                            Intent in = new Intent(LoginActivity.this, MainActivity.class);
-                            startActivity(in);
-                        }
-                        Intent in = new Intent(LoginActivity.this, MainActivity.class);
-                        startActivity(in);
-                    }
-                });
-
-        task.execute("https://www.varcreative.com/sistema/login/check/");*/
         String  server_url="https://www.varcreative.com/sistema/login/check/";
         final RequestQueue requestQueue = Volley.newRequestQueue(this);
         StringRequest stringRequest = new StringRequest(Request.Method.POST, server_url,new Response.Listener<String>() {
@@ -127,6 +106,28 @@ public class LoginActivity extends AppCompatActivity implements CompoundButton.O
             @Override
             public void onResponse(String response) {
                 Log.d("Respuesta",response);
+                try {
+                    JSONObject respuesta = new JSONObject(response);
+                    String s = respuesta.getString("error");
+                    if (s == "false"){
+                        if(checkFlag) {
+                            editor.putString("nombre", etxtUsuario.getText().toString());
+                            editor.putString("password",MD5.encrypt((etxtUsuario.getText().toString())));
+                            editor.apply();
+
+                            Log.d(TAG, pref.getString("password", ""));
+                        }
+
+                        Intent in = new Intent(LoginActivity.this, MainActivity.class);
+                        startActivity(in);
+
+                    }else {
+                        Toast.makeText(LoginActivity.this, "Usuario o Password invalido", Toast.LENGTH_SHORT).show();
+                    }
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+
             }
         }, new Response.ErrorListener() {
             @Override
@@ -154,11 +155,6 @@ public class LoginActivity extends AppCompatActivity implements CompoundButton.O
             Log.d(TAG, "checkFlag: " + checkFlag);
         }
 
-    public String[] convertir(String s){
-        String[] vectorVariables = s.split(",");
-
-        return vectorVariables;
-    };
 
     }
 
