@@ -83,6 +83,9 @@ public class MainActivity extends AppCompatActivity {
         TextViewActualClientDire = (TextView) findViewById(R.id.actualDirClientValue);
         TextViewActualClientId=(TextView) findViewById(R.id.actualClientId);
         TextZona = (TextView) findViewById(R.id.textZona);
+        //aca tomamos los valores que vienen del login
+        int id_dispositivo = getIntent().getIntExtra("id_dispositivo",0);
+        int id_empresa = getIntent().getIntExtra("id_empresa",0);
     }
 
     @Override
