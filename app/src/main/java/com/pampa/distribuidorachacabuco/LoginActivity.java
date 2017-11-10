@@ -45,6 +45,8 @@ public class LoginActivity extends AppCompatActivity implements CompoundButton.O
     CheckBox cbRemember;
     SharedPreferences pref;
     SharedPreferences.Editor editor;
+    private int id_dispositivo;
+    private int id_empresa;
 
     boolean checkFlag;
 
@@ -108,6 +110,9 @@ public class LoginActivity extends AppCompatActivity implements CompoundButton.O
                 Log.d("Respuesta",response);
                 try {
                     JSONObject respuesta = new JSONObject(response);
+                    //cuando agregues al response el id_dispositivo, hay que descomentar y listo
+                    //id_dispositivo = Integer.parseInt(respuesta.getString("id_dispositivo"))
+                    id_empresa = Integer.parseInt(respuesta.getString("id_empresa"));
                     String s = respuesta.getString("error");
                     if (s == "false"){
                         if(checkFlag) {
@@ -119,6 +124,8 @@ public class LoginActivity extends AppCompatActivity implements CompoundButton.O
                         }
 
                         Intent in = new Intent(LoginActivity.this, MainActivity.class);
+                        in.putExtra("id_dispositivo",id_dispositivo);
+                        in.putExtra("id_empresa",id_empresa);
                         startActivity(in);
 
                     }else {
