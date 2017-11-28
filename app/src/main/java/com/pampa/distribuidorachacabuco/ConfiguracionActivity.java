@@ -79,7 +79,7 @@ public class ConfiguracionActivity extends AppCompatActivity implements AdapterV
 
     }
 
-    public String createCSV(View view){
+    public void createCSV(View view){
 
         File folder = new File(Environment.getExternalStorageDirectory() + "/Folder");
         if (!folder.exists())
@@ -106,10 +106,10 @@ public class ConfiguracionActivity extends AppCompatActivity implements AdapterV
                 cursor2.close();
             }
             fw.close();
+            db1.close();
         } catch(Exception e){
             e.getMessage();
         }
-        return filename;
     }
 
 

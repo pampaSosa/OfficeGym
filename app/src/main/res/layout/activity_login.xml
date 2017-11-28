@@ -4,7 +4,6 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#283593"
     tools:context="com.pampa.distribuidorachacabuco.LoginActivity"
     tools:layout_editor_absoluteY="25dp">
 
@@ -20,11 +19,12 @@
         android:hint="Usuario"
         android:inputType="textPersonName"
         android:singleLine="true"
-        android:textColor="@color/icons"
-        android:textColorHint="@color/icons"
+        android:textColor="@color/bb_darkBackgroundColor"
+        android:textColorHint="@color/bb_darkBackgroundColor"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        tools:nextFocusDown="@id/etxtPassword" />
 
     <EditText
         android:id="@+id/etxtPassword"
@@ -36,10 +36,10 @@
         android:drawableLeft="@drawable/ic_vpn_key_black_24dp"
         android:ems="10"
         android:hint="Contraseña"
-        android:inputType="textPassword"
+        android:inputType="numberPassword"
         android:shadowColor="@color/icons"
-        android:textColor="@color/icons"
-        android:textColorHint="@color/icons"
+        android:textColor="@color/bb_darkBackgroundColor"
+        android:textColorHint="@color/bb_darkBackgroundColor"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.495"
         app:layout_constraintStart_toStartOf="parent"
@@ -71,7 +71,6 @@
         android:layout_marginStart="204dp"
         android:layout_marginTop="36dp"
         android:text="Recordarme"
-        android:textColor="@color/icons"
         android:textColorHighlight="@color/icons"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"

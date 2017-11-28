@@ -55,23 +55,31 @@
             android:id="@+id/button4"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp"
+            android:background="#3F51B5"
             android:onClick="limpiar"
-            android:text="Limpiar" />
+            android:text="Limpiar"
+            android:textColor="@color/icons" />
 
         <Button
             android:id="@+id/button"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:background="#3F51B5"
             android:onClick="guardar"
-            android:text="Guardar" />
+            android:text="Guardar"
+            android:textColor="@color/icons" />
 
         <Button
             android:id="@+id/btnexport"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
             android:layout_weight="1"
+            android:background="#3F51B5"
             android:onClick="createCSV"
-            android:text="EXPORTAR" />
+            android:text="EXPORTAR"
+            android:textColor="@color/icons" />
 
     </LinearLayout>
 
