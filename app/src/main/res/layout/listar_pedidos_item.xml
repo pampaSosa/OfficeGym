@@ -50,14 +50,18 @@
             android:layout_width="40dp"
             android:layout_height="wrap_content"
             android:layout_weight="0.31"
-            android:text="&#xf040;" />
+            android:background="#3F51B5"
+            android:text="&#xf040;"
+            android:textColor="@color/icons" />
 
         <Button
             android:id="@+id/btnBorrarPedido"
             android:layout_width="40dp"
             android:layout_height="wrap_content"
             android:layout_weight="0.33"
-            android:text="&#xf00d;" />
+            android:background="#3F51B5"
+            android:text="&#xf00d;"
+            android:textColor="@color/icons" />
     </LinearLayout>
 
 </LinearLayout>

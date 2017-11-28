@@ -78,7 +78,7 @@ public class LoginActivity extends AppCompatActivity implements CompoundButton.O
         data.put("nombre", username);
         data.put("password", MD5.encrypt((password)));
 
-
+        //TODO terminar la logica de que entre directo al main cuando el remember me este check
         if(!(username.equals("") && password.equals(""))){
             PostResponseAsyncTask task = new PostResponseAsyncTask(LoginActivity.this, data,
                     new AsyncResponse() {
@@ -93,6 +93,7 @@ public class LoginActivity extends AppCompatActivity implements CompoundButton.O
                     });
 
             task.execute("www.varcreative.com/sistema/login/check/");
+
         }
     }
 
@@ -108,13 +109,14 @@ public class LoginActivity extends AppCompatActivity implements CompoundButton.O
             @Override
             public void onResponse(String response) {
                 Log.d("Respuesta",response);
+
                 try {
                     JSONObject respuesta = new JSONObject(response);
                     //cuando agregues al response el id_dispositivo, hay que descomentar y listo
                     //id_dispositivo = Integer.parseInt(respuesta.getString("id_dispositivo"))
-                    id_empresa = Integer.parseInt(respuesta.getString("id_empresa"));
                     String s = respuesta.getString("error");
                     if (s == "false"){
+                        id_empresa = respuesta.getInt("id_empresa");
                         if(checkFlag) {
                             editor.putString("nombre", etxtUsuario.getText().toString());
                             editor.putString("password",MD5.encrypt((etxtUsuario.getText().toString())));
@@ -124,12 +126,12 @@ public class LoginActivity extends AppCompatActivity implements CompoundButton.O
                         }
 
                         Intent in = new Intent(LoginActivity.this, MainActivity.class);
-                        in.putExtra("id_dispositivo",id_dispositivo);
+                        //in.putExtra("id_dispositivo",id_dispositivo);
                         in.putExtra("id_empresa",id_empresa);
                         startActivity(in);
 
                     }else {
-                        Toast.makeText(LoginActivity.this, "Usuario o Password invalido", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(LoginActivity.this, "Usuario o Password invalido", Toast.LENGTH_LONG).show();
                     }
                 } catch (JSONException e) {
                     e.printStackTrace();

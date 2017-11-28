@@ -14,8 +14,11 @@ import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
+import android.widget.SimpleCursorAdapter;
+import android.widget.Spinner;
 import android.widget.TextView;
 
 import com.android.volley.Request;
@@ -52,7 +55,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
 
     private static final String LOGTAG = "LogsAndroid";
     TextView TextViewActualClientNombre;
@@ -70,6 +73,7 @@ public class MainActivity extends AppCompatActivity {
     String recorrido = "";
     ConfiguracionModel configuracionModel = new ConfiguracionModel(this);
     private boolean enviando = false;
+    //Spinner spinner;
 
     private Cliente clienteActual;
 
@@ -78,7 +82,9 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         textView = (TextView)findViewById(R.id.textView);
-
+       /* spinner = (Spinner) findViewById(R.id.recorridoSpinner);
+        String[] cols = new String[]{"nombre"};
+        int[] adapterRows = new int[]{ android.R.id.text1 };*/
         TextViewActualClientNombre = (TextView) findViewById(R.id.actualClientValue);
         TextViewActualClientDire = (TextView) findViewById(R.id.actualDirClientValue);
         TextViewActualClientId=(TextView) findViewById(R.id.actualClientId);
@@ -86,6 +92,17 @@ public class MainActivity extends AppCompatActivity {
         //aca tomamos los valores que vienen del login
         int id_dispositivo = getIntent().getIntExtra("id_dispositivo",0);
         int id_empresa = getIntent().getIntExtra("id_empresa",0);
+
+        //spinner de recorrido
+        /*AdminSQLiteOpenHelper dbHelper = new AdminSQLiteOpenHelper(this);
+        SQLiteDatabase db = dbHelper.getWritableDatabase();
+        Cursor cursor = db.rawQuery("SELECT _id,nombre FROM recorridos",null);
+        SimpleCursorAdapter adap = new SimpleCursorAdapter(this,android.R.layout.simple_spinner_item, cursor, cols, adapterRows,1);
+        adap.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        spinner.setAdapter(adap);
+        spinner.setOnItemSelectedListener(this);*/
+
+
     }
 
     @Override
@@ -273,5 +290,13 @@ public class MainActivity extends AppCompatActivity {
         }
 
 
+    @Override
+    public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+        this.id_recorrido = (int)id;
+    }
+
+    @Override
+    public void onNothingSelected(AdapterView<?> parent) {
 
     }
+}

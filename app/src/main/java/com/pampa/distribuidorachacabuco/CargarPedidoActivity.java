@@ -193,10 +193,10 @@ public class CargarPedidoActivity extends AppCompatActivity implements View.OnCl
             }
         });
 
-        pickDate = (Button)findViewById(R.id.pickDate);
-        pickDate.setTypeface(FontManager.getTypeface(this.getApplicationContext(),FontManager.FONTAWESOME));
+        //pickDate = (Button)findViewById(R.id.pickDate);
+        //pickDate.setTypeface(FontManager.getTypeface(this.getApplicationContext(),FontManager.FONTAWESOME));
         dateDisplay = (TextView)findViewById(R.id.dateDisplay);
-        pickDate.setOnClickListener(this);
+        dateDisplay.setOnClickListener(this);
         dateDisplay.setText(factura.getFecha());
     }
 
@@ -385,25 +385,22 @@ public class CargarPedidoActivity extends AppCompatActivity implements View.OnCl
 
     @Override
     public void onClick(View v) {
-        /*
-        if (v == pickDate) {
-            final Calendar c = Calendar.getInstance();
-            dia = c.get(Calendar.DAY_OF_MONTH);
-            mes = c.get(Calendar.MONTH);
-            anio = c.get(Calendar.YEAR);
-            DatePickerDialog datePickerDialog = new DatePickerDialog(this, new DatePickerDialog.OnDateSetListener() {
-                @Override
-                public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
-                    Calendar cal = Calendar.getInstance();
-                    cal.set(Calendar.YEAR,year);
-                    cal.set(Calendar.MONTH,month);
-                    cal.set(Calendar.DAY_OF_MONTH,dayOfMonth);
-                    SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
-                    dateDisplay.setText(sdf.format(cal.getTime()));
-                }
-            }, anio, mes, dia);
-            datePickerDialog.show();
+        switch (v.getId()) {
+            case R.id.dateDisplay:
+                showDatePickerDialog();
+                break;
         }
-        */
+    }
+
+    private void showDatePickerDialog() {
+        DatePickerFragment newFragment = DatePickerFragment.newInstance(new DatePickerDialog.OnDateSetListener() {
+            @Override
+            public void onDateSet(DatePicker datePicker, int year, int month, int day) {
+                // +1 por que enero es cero
+                final String selectedDate = day + " / " + (month+1) + " / " + year;
+                dateDisplay.setText(selectedDate);
+            }
+        });
+        newFragment.show(getSupportFragmentManager(), "datePicker");
     }
 }

@@ -29,8 +29,10 @@
                 android:id="@+id/button3"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
+                android:background="#3F51B5"
                 android:onClick="nuevoCliente"
-                android:text="Nuevo Cliente" />
+                android:text="Nuevo Cliente"
+                android:textColor="@color/icons" />
 
         </LinearLayout>
 
