@@ -26,6 +26,7 @@ public class ConfiguracionActivity extends AppCompatActivity implements AdapterV
     Spinner spinner;
     Button btnexport;
     private int id_recorrido = 0;
+    AdminSQLiteOpenHelper dbHelper;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,7 +41,7 @@ public class ConfiguracionActivity extends AppCompatActivity implements AdapterV
         String[] cols = new String[]{"nombre"};
         int[] adapterRows = new int[]{ android.R.id.text1 };
 
-        AdminSQLiteOpenHelper dbHelper = new AdminSQLiteOpenHelper(this);
+        this.dbHelper = new AdminSQLiteOpenHelper(this);
         SQLiteDatabase db = dbHelper.getWritableDatabase();
         Cursor cursor = db.rawQuery("SELECT _id,nombre FROM recorridos",null);
         SimpleCursorAdapter adap = new SimpleCursorAdapter(this,android.R.layout.simple_spinner_item, cursor, cols, adapterRows,1);
@@ -87,8 +88,8 @@ public class ConfiguracionActivity extends AppCompatActivity implements AdapterV
         final String filename = folder.toString() + "/" + "facturas.csv";
 
 
-        AdminSQLiteOpenHelper dbHelper1 = new AdminSQLiteOpenHelper(this);
-        SQLiteDatabase db1 = dbHelper1.getWritableDatabase();
+        this.dbHelper = new AdminSQLiteOpenHelper(this);
+        SQLiteDatabase db1 = this.dbHelper.getWritableDatabase();
         Cursor cursor2 = db1.rawQuery("SELECT * FROM facturas where uploaded = 0", null);
 
         try {
