@@ -1,5 +1,6 @@
 package com.pampa.distribuidorachacabuco;
 
+import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -72,29 +73,16 @@ public class LoginActivity extends AppCompatActivity implements CompoundButton.O
 
         String username = pref.getString("nombre","");
         String password = pref.getString("password","");
-        Log.d(TAG,pref.getString("password",""));
+        int idEmpresa = pref.getInt("idEmpresa",0);
+
 
         HashMap data = new HashMap();
         data.put("nombre", username);
         data.put("password", MD5.encrypt((password)));
+        data.put("idEmpresa", idEmpresa);
 
         //TODO terminar la logica de que entre directo al main cuando el remember me este check
-        if(!(username.equals("") && password.equals(""))){
-            PostResponseAsyncTask task = new PostResponseAsyncTask(LoginActivity.this, data,
-                    new AsyncResponse() {
-                        @Override
-                        public void processFinish(String s) {
-                            Log.d(TAG, s);
-                            if(s.contains("success")){
-                                Intent in = new Intent(LoginActivity.this, MainActivity.class);
-                                startActivity(in);
-                            }
-                        }
-                    });
-
-            task.execute("www.varcreative.com/sistema/login/check/");
-
-        }
+        //checkLog(username, password,idEmpresa);
     }
 
 
@@ -102,6 +90,12 @@ public class LoginActivity extends AppCompatActivity implements CompoundButton.O
 
     @Override
     public void onClick(View v) {
+        final ProgressDialog dialog = new ProgressDialog(this);
+        dialog.setProgressStyle(ProgressDialog.STYLE_SPINNER);
+        dialog.setIndeterminate(true);
+        dialog.setCancelable(true);
+        dialog.setMessage("Por favor espere...");
+        dialog.show();
         String  server_url="https://www.varcreative.com/sistema/login/check/";
         final RequestQueue requestQueue = Volley.newRequestQueue(this);
         StringRequest stringRequest = new StringRequest(Request.Method.POST, server_url,new Response.Listener<String>() {
@@ -116,10 +110,11 @@ public class LoginActivity extends AppCompatActivity implements CompoundButton.O
                     //id_dispositivo = Integer.parseInt(respuesta.getString("id_dispositivo"))
                     String s = respuesta.getString("error");
                     if (s == "false"){
-                        id_empresa = respuesta.getInt("id_empresa");
+                        id_empresa = Integer.parseInt(respuesta.getString("id_empresa"));
                         if(checkFlag) {
                             editor.putString("nombre", etxtUsuario.getText().toString());
                             editor.putString("password",MD5.encrypt((etxtUsuario.getText().toString())));
+                            editor.putInt("idEmpresa", id_empresa);
                             editor.apply();
 
                             Log.d(TAG, pref.getString("password", ""));
@@ -127,14 +122,17 @@ public class LoginActivity extends AppCompatActivity implements CompoundButton.O
 
                         Intent in = new Intent(LoginActivity.this, MainActivity.class);
                         //in.putExtra("id_dispositivo",id_dispositivo);
-                        in.putExtra("id_empresa",id_empresa);
+                        int idEmpresa = pref.getInt("idEmpresa",0);
+                        in.putExtra("id_empresa",idEmpresa);
                         startActivity(in);
 
                     }else {
                         Toast.makeText(LoginActivity.this, "Usuario o Password invalido", Toast.LENGTH_LONG).show();
                     }
+                    dialog.dismiss();
                 } catch (JSONException e) {
                     e.printStackTrace();
+
                 }
 
             }
@@ -164,6 +162,14 @@ public class LoginActivity extends AppCompatActivity implements CompoundButton.O
             Log.d(TAG, "checkFlag: " + checkFlag);
         }
 
+        public void checkLog(String username, String password,int id_empresa){
+            if(!(username.equals("") && password.equals(""))){
+                    Intent in = new Intent(LoginActivity.this, MainActivity.class);
+                    in.putExtra("id_empresa",id_empresa);
+                    startActivity(in);
+
+            }
+        }
 
     }
 

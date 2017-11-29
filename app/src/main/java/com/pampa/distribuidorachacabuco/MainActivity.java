@@ -93,6 +93,7 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
         int id_dispositivo = getIntent().getIntExtra("id_dispositivo",0);
         int id_empresa = getIntent().getIntExtra("id_empresa",0);
 
+
         //spinner de recorrido
         /*AdminSQLiteOpenHelper dbHelper = new AdminSQLiteOpenHelper(this);
         SQLiteDatabase db = dbHelper.getWritableDatabase();
