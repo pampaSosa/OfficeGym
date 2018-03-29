@@ -1,0 +1,42 @@
+{
+  "project_info": {
+    "project_number": "240677977690",
+    "firebase_url": "https://gymapp-193403.firebaseio.com",
+    "project_id": "gymapp-193403",
+    "storage_bucket": "gymapp-193403.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:240677977690:android:5f8cc74d0823bc26",
+        "android_client_info": {
+          "package_name": "com.pampa.officegym"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "240677977690-8kgi6cp63lmtperi57poo7tk1gm2gk2m.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBMX1lHOArswlKCykfjeFyzUHuEGnk00NM"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
