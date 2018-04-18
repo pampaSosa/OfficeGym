@@ -10,7 +10,7 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@color/colorPrimary"
+        android:background="@drawable/backgroundgymapp"
         android:orientation="vertical"
         android:weightSum="100">
 
@@ -38,7 +38,8 @@
                 android:layout_marginLeft="5dp"
                 android:layout_weight="1"
                 android:text="TextView"
-                android:textColor="@android:color/background_light" />
+                android:textColor="@android:color/background_light"
+                android:textSize="35dp" />
         </LinearLayout>
 
         <View
@@ -52,7 +53,7 @@
             android:id="@+id/tabLayout"
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:layout_weight="10"
+            android:layout_weight="6"
             android:contextClickable="false"
             android:drawingCacheQuality="high"
             android:elevation="4dp"

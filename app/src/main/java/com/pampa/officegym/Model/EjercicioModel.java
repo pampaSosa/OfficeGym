@@ -22,7 +22,11 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
+
+import static com.android.volley.Request.*;
 
 /**
  * Created by adrian on 22/01/2018.
@@ -41,7 +45,7 @@ public class EjercicioModel {
     public ArrayList<Ejercicio> getEjerciciosFotos(){
 
         ArrayList<Ejercicio> ejercicios=new ArrayList<>();
-        //Ejercicio ejercicio =new Ejercicio("Nombre ejer1",lorem, "http://buscasalud.com/wp-content/uploads/2017/01/fitness2.jpg");
+        //Ejercicio ejercicio =new Ejercicio("Nombre ejer1",lorem, "http://buscasalud.com/wp-content/uploads/2017/01/fitness2.jpg"");
        // ejercicios.add(ejercicio);
         //Ejercicio ejercicio2 =new Ejercicio("Nombre ejer2",lorem,"https://i0.wp.com/www.elblogdeyes.com/wp-content/uploads/2016/07/gym.jpg");
        // ejercicios.add(ejercicio2);
@@ -68,11 +72,11 @@ public class EjercicioModel {
 
 
 
-    public ArrayList<Ejercicio> getEjerciciosVideos(Context context)
+    /*public ArrayList<Ejercicio> getEjerciciosVideos(Context context)
     {
         requestQueue = Volley.newRequestQueue(context);
         final ArrayList<Ejercicio> arrayEjercicio = new ArrayList<Ejercicio>();
-        JsonArrayRequest jsonArrayRequest = new JsonArrayRequest(Request.Method.POST,urlGetVideos,new Response.Listener<JSONArray>() {
+        JsonArrayRequest jsonArrayRequest = new JsonArrayRequest(Method.POST,urlGetVideos,new Response.Listener<JSONArray>() {
                     @Override
                     public void onResponse(JSONArray response) {
                     int count = 0;
@@ -98,6 +102,65 @@ public class EjercicioModel {
         );
         requestQueue.add(jsonArrayRequest);
         return arrayEjercicio;
+       return null;
+    }*/
+
+    public ArrayList<Ejercicio>getEjerciciosVideos(){
+        Date ahora = new Date();
+        SimpleDateFormat formateador = new SimpleDateFormat("dd-MM-yyyy");
+        formateador.format(ahora);
+        ArrayList<Ejercicio> ejercicios=new ArrayList<>();
+        Ejercicio ejercicio1 = new Ejercicio(1,"titulo ejercicio 1",
+                "texto breve, texto breve,texto brevetexto brevetexto brevetexto brevetexto breve",
+                "https://ep00.epimg.net/elpais/imagenes/2016/12/07/album/1481112708_143319_1481113244_album_normal.jpg",
+                "https://www.youtube.com/watch?v=c1c3dvmGWZ4",1, ahora,true,false );
+        Ejercicio ejercicio2 = new Ejercicio(2,"titulo ejercicio 2",
+                "texto breve, texto breve,texto brevetexto brevetexto brevetexto brevetexto breve",
+                "http://buscasalud.com/wp-content/uploads/2017/01/fitness2.jpg",
+                "https://www.youtube.com/watch?v=c1c3dvmGWZ4",1, ahora,true,false );
+        Ejercicio ejercicio3 = new Ejercicio(3,"titulo ejercicio 2",
+                "texto breve, texto breve,texto brevetexto brevetexto brevetexto brevetexto breve",
+                "http://buscasalud.com/wp-content/uploads/2017/01/fitness2.jpg",
+                "https://www.youtube.com/watch?v=c1c3dvmGWZ4",1, ahora,true,false );
+        Ejercicio ejercicio4 = new Ejercicio(4,"titulo ejercicio 2",
+                "texto breve, texto breve,texto brevetexto brevetexto brevetexto brevetexto breve",
+                "http://buscasalud.com/wp-content/uploads/2017/01/fitness2.jpg",
+                "https://www.youtube.com/watch?v=c1c3dvmGWZ4",1, ahora,true,false );
+        ejercicios.add(ejercicio1);
+        ejercicios.add(ejercicio2);
+        ejercicios.add(ejercicio3);
+        ejercicios.add(ejercicio4);
+
+        return ejercicios;
+    }
+
+    public ArrayList<Ejercicio>getEjerciciosVideosCat(){
+        Date ahora = new Date();
+        SimpleDateFormat formateador = new SimpleDateFormat("dd-MM-yyyy");
+        formateador.format(ahora);
+        ArrayList<Ejercicio> ejercicios=new ArrayList<>();
+        Ejercicio ejercicio1 = new Ejercicio(1,"titulo ejercicio 1",
+                "texto breve, texto breve,texto brevetexto brevetexto brevetexto brevetexto breve",
+                "https://ep00.epimg.net/elpais/imagenes/2016/12/07/album/1481112708_143319_1481113244_album_normal.jpg",
+                "https://www.youtube.com/watch?v=c1c3dvmGWZ4",1, ahora,true,false );
+        Ejercicio ejercicio2 = new Ejercicio(2,"titulo ejercicio 2",
+                "texto breve, texto breve,texto brevetexto brevetexto brevetexto brevetexto breve",
+                "http://buscasalud.com/wp-content/uploads/2017/01/fitness2.jpg",
+                "https://www.youtube.com/watch?v=c1c3dvmGWZ4",1, ahora,true,false );
+        Ejercicio ejercicio3 = new Ejercicio(3,"titulo ejercicio 2",
+                "texto breve, texto breve,texto brevetexto brevetexto brevetexto brevetexto breve",
+                "http://buscasalud.com/wp-content/uploads/2017/01/fitness2.jpg",
+                "https://www.youtube.com/watch?v=c1c3dvmGWZ4",1, ahora,true,false );
+        Ejercicio ejercicio4 = new Ejercicio(4,"titulo ejercicio 2",
+                "texto breve, texto breve,texto brevetexto brevetexto brevetexto brevetexto breve",
+                "http://buscasalud.com/wp-content/uploads/2017/01/fitness2.jpg",
+                "https://www.youtube.com/watch?v=c1c3dvmGWZ4",1, ahora,true,false );
+        ejercicios.add(ejercicio1);
+        ejercicios.add(ejercicio2);
+        ejercicios.add(ejercicio3);
+        ejercicios.add(ejercicio4);
+
+        return ejercicios;
     }
 
 

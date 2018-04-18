@@ -1,5 +1,6 @@
 package com.pampa.officegym.Adapter;
 
+import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentStatePagerAdapter;
@@ -15,7 +16,6 @@ import com.pampa.officegym.Fragments.VideoFragment;
 public class PagerAdapter extends FragmentStatePagerAdapter {
 
     private int numberOfTabs;
-
 
     public PagerAdapter(FragmentManager fm, int numberOfTabs) {
         super(fm);

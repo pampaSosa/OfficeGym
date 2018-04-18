@@ -54,19 +54,19 @@ public class CustomAdapterVideo extends BaseAdapter {
         }
         if(convertView==null)
         {
-            convertView=inflater.inflate(R.layout.item_row,parent,false);
+            convertView=inflater.inflate(R.layout.item_row_video,parent,false);
         }
 
         Ejercicio ejercicio = ejercicios.get(position);
         TextView titulo = (TextView) convertView.findViewById(R.id.nombreEjer);
         titulo.setText(ejercicio.getTitulo());
 
-       /* ImageView imagen = convertView.findViewById(R.id.ImageEjercicio);
+        ImageView imagen = convertView.findViewById(R.id.ImageEjercicio);
         String url = ejercicio.getLink();
         Picasso.with(context)
                 .load(url)
                 .placeholder(R.drawable.sin_imagen)
-                .into(imagen);*/
+                .into(imagen);
 
         return convertView;
     }

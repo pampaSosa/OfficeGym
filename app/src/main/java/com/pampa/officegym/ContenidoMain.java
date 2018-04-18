@@ -13,6 +13,7 @@ import android.widget.Toast;
 
 import com.pampa.officegym.Adapter.PagerAdapter;
 import com.pampa.officegym.Fragments.TextFragment;
+import com.pampa.officegym.Fragments.VideoFragment;
 
 public class ContenidoMain extends AppCompatActivity {
 
@@ -37,6 +38,12 @@ public class ContenidoMain extends AppCompatActivity {
         tabLayout.addTab(tabLayout.newTab().setText("Textos"));
 
         //tabLayout.getTabAt(0).setIcon(R.drawable.ic_ondemand_video_white_24dp);
+
+
+        Bundle bundle = new Bundle();
+        bundle.putString("categoria", intentTxt);
+        VideoFragment videoFragment = new VideoFragment();
+        videoFragment.setArguments(bundle);
 
         final ViewPager viewPager = (ViewPager) findViewById(R.id.viewPager);
         PagerAdapter adaptador = new PagerAdapter(getSupportFragmentManager(), tabLayout.getTabCount());

@@ -5,6 +5,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -23,6 +24,7 @@ import java.util.ArrayList;
 
 public class VideoFragment extends Fragment {
 
+    private static final String TAG = "";
     EjercicioModel ejercicioModel;
     ArrayList<Ejercicio> arrayListEjericio;
     ListView lv;
@@ -46,8 +48,9 @@ public class VideoFragment extends Fragment {
         lv.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-                arrayListEjericio = ejercicioModel.getEjerciciosVideos(contexta);
+                arrayListEjericio = ejercicioModel.getEjerciciosVideos();
                 Ejercicio e = arrayListEjericio.get(i);
+
 
                 Intent intent = new Intent(getActivity(), DetalleActivity.class);
                 //intent.putExtra("titulo", e.getNombre());
@@ -64,7 +67,7 @@ public class VideoFragment extends Fragment {
 
     private ArrayList<Ejercicio> getVideos(Context context){
         ejercicioModel = new EjercicioModel();
-        return ejercicioModel.getEjerciciosVideos(context);
+        return ejercicioModel.getEjerciciosVideos();
 
     }
 }

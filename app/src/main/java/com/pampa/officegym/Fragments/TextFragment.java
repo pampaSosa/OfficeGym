@@ -42,7 +42,7 @@ public class TextFragment extends Fragment {
 
     private ArrayList<Ejercicio> getTextos(){
         ejercicioModel = new EjercicioModel();
-        return ejercicioModel.getEjerciciosVideos(getContext());
+        return ejercicioModel.getEjerciciosVideos();
     }
 
 
